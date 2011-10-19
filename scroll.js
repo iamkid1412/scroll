@@ -18,8 +18,8 @@ jQuery.extend({
 		var win = window,
 			imgBox = $(elem),
 			img = imgBox.find("img"),
-			width = $(win).width(),
-			height = img.height(),
+			width = win.screen.width,
+			height = imgBox.height(),
 			currIndex = 0,
 			count = img.length,
 			timer = 0,
@@ -34,7 +34,11 @@ jQuery.extend({
 			bindEvent;
 
 		initImages = function () {
-			imgBox.find("img").css("width", width);
+			imgBox.parent(".wrapper").css("width", width);
+			img.css({
+				"width": width,
+				"height": height
+			});
 		};
 		initDirection = function () {
 			if (isTop) {
